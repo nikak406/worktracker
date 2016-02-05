@@ -1,12 +1,18 @@
 package com.nikak406.worktracker;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 
-public class SandwatchActivity extends Activity {
+
+public class SandwatchActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -16,17 +22,44 @@ public class SandwatchActivity extends Activity {
         setContentView(R.layout.activity_sandwatch);
 
         initToolbar();
+
+        initNavDrawer();
     }
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
-        toolbar.setOnMenuItemClickListener( new Toolbar.OnMenuItemClickListener(){
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 return false;
             }
         });
         toolbar.inflateMenu(R.menu.menu_sandwatch);
+//        if (toolbar != null){
+//            setSupportActionBar(toolbar);
+//        }
+    }
+
+    private void initNavDrawer() {
+        Drawer.Result drawerResult = new Drawer()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withDisplayBelowToolbar(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .addDrawerItems(
+                        new PrimaryDrawerItem()
+                                .withName(R.string.action_settings)
+                                .withIdentifier(1),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem()
+                                .withName(R.string.projects),
+                        new SectionDrawerItem()
+                                .withName(R.string.tasks)
+                                .setDivider(false),
+                        new SectionDrawerItem()
+                                .setDivider(false)
+                                .withName(R.string.stats))
+                .build();
     }
 }
