@@ -18,12 +18,13 @@ public class SandwatchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandwatch);
 
         initToolbar();
 
-        initNavDrawer();
+        //initNavDrawer();
     }
 
     private void initToolbar() {
@@ -49,17 +50,14 @@ public class SandwatchActivity extends AppCompatActivity {
                 .withActionBarDrawerToggleAnimated(true)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
-                                .withName(R.string.action_settings)
+                                .withName(R.string.action_one)
                                 .withIdentifier(1),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem()
-                                .withName(R.string.projects),
+                                .withName(R.string.action_two),
                         new SectionDrawerItem()
-                                .withName(R.string.tasks)
-                                .setDivider(false),
-                        new SectionDrawerItem()
-                                .setDivider(false)
-                                .withName(R.string.stats))
+                                .withName(R.string.action_three)
+                                .setDivider(false))
                 .build();
     }
 }
