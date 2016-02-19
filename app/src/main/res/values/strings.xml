@@ -4,5 +4,7 @@
     <string name="action_one">Day</string>
     <string name="action_two">Week</string>
     <string name="action_three">Month</string>
+    <string name="view_navigation_open">Open</string>
+    <string name="view_navigation_close">Close</string>
 
 </resources>
